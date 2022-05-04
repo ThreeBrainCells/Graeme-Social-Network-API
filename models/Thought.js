@@ -5,7 +5,8 @@ const thoughtSchema = new Schema(
         thoughtText: {
             type: String,
             required: true,
-            //in between 1 & 280 characters
+            minLength: 1,
+            maxLength: 280
         },
         createdAt: {
             type: Date,
@@ -33,7 +34,7 @@ const reactionSchema = new Schema(
         reactionBody: {
             type: String,
             required: true,
-            //max 280 chars
+            maxLength: 280
         },
         username:{
             type: String,
