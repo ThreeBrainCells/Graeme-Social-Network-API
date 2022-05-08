@@ -1,5 +1,5 @@
 const { ObjectId } = require('mongoose').Types;
-const { User, Thought } = require('../models')
+const { User, Thought, } = require('../models')
 
 module.exports = {
 
@@ -21,7 +21,7 @@ module.exports = {
     },
     //post a new thought then push the new id into associated user field
     createThought(req, res) {
-        thought.create(req.body)
+        Thought.create(req.body)
           .then((thought) => {
             return User.findOneAndUpdate(
               { _id: req.body.userId },
