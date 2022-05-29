@@ -7,7 +7,10 @@ module.exports = {
     getThoughts(req, res) {
         Thought.find()
         .then((thoughts) => res.json(thoughts))
-        .catch((err) => res.status(500).json(err));
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json(err);
+        });
     },
     //get a single thought by id
     getSingleThought(req, res) {
@@ -73,7 +76,7 @@ module.exports = {
           .then((user) =>
             !user
               ? res.status(404).json({
-                  message: 'Thought created but no user with this id!',
+                  message: 'Thought deleted but no user with this id!',
                 })
               : res.json({ message: 'Thought successfully deleted!' })
           )
